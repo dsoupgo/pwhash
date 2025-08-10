@@ -1,5 +1,7 @@
 # Password Hashing for Go
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/dsoupgo/pwhash.svg)](https://pkg.go.dev/github.com/dsoupgo/pwhash)
+
 This package is a simple interface for generating secure password hashes and
 verifying them. Its choice of algorithm (Argon2id) and parameters are derived
 from what libsodium uses. It also supports peppering, which is similar to a salt
