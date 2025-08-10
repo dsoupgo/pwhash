@@ -29,3 +29,36 @@ https://github.com/golang/go/issues/60740.
 
 This is licensed under the same 3-clause BSD license as Go. See `LICENSE` for
 more details.
+
+## Usage
+
+```go
+package main
+
+import (
+	"crypto/rand"
+	"fmt"
+
+	"github.com/dsoupgo/pwhash"
+)
+
+func main() {
+	hasher := pwhash.Hasher{Secret: getSecret()}
+
+	hash := hasher.Hash("dragon")
+
+	// If the password matches, we get nil.
+	fmt.Printf("Should be nil: %v\n", hasher.Verify(hash, "dragon"))
+
+	// If it does not match, or the hash is invalid, we get an error.
+	fmt.Printf("Should be error: %v\n", hasher.Verify(hash, "dragoN"))
+}
+
+func getSecret() []byte {
+	// You should get this from a secrets manager of some kind.
+	var secret [32]byte
+	rand.Read(secret[:])
+
+	return secret[:]
+}
+```
