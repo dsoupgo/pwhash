@@ -1,0 +1,9 @@
+version: "2"
+linters:
+  default: all
+  disable:
+    - depguard # Not desired.
+    - wsl # Replaced by wsl_v5.
+  exclusions:
+    paths:
+      - internal/argon2/
